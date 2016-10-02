@@ -2,6 +2,7 @@
 <pre style="margin:0 auto; display:table">
 ================================================
 Bing-Ultra-Cravler Author:GDurtan
+require: phantomjs
 ================================================
 
 ------------------------------------------------
@@ -33,9 +34,18 @@ sudo bash mongo-export-csv.sh
 ################################################
 TESTS
 ------------------------------------------------
+
 404 Test
-
 $ sudo bash WP-404-TEST.sh 
+Check wp-content and readme.html http code
+------------------------------------------------
+Meta Generator Test
+$ sudo META-VERSION-TEST.sh
+Find meta_name="generator" and return content
+------------------------------------------------
+Page insight CMS test
+$ sudo PAGE-INSIGHT-CMS-TEST.sh
+Find and return cms type from Google PSI API
 
-Start two tests and save bucket into database
+
 </pre>
