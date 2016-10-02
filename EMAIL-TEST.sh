@@ -1,7 +1,4 @@
 #!/bin/bash
-# usage:
-# bash script.sh readfile > savefile
-
 DATE=`date +%Y%m%d`
 
 
@@ -11,15 +8,23 @@ mongo --eval "db = connect('localhost:27017/local');"
 #mongo --eval "printjson(db.getCollectionNames());"
 
 #mongo --eval "db = connect('local')"
-while IFS=, read col1 col2
+while IFS=, read col1 
 do
 
-	WPCONTENT="`curl -o /dev/null --silent --head --write-out '%{http_code}' "$col1/wp-content"`"
-	README="`curl -o /dev/null --silent --head --write-out '%{http_code}' "$col1/readme.html"`"
-	echo "\"$col1\",\"$WPCONTENT\",\"$README\""
+	echo "# $col1"
+	RESULT="`wget -qO- $col1 |
+		grep -Eoi '\b[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9.-]+\b'`"
+
 	
-	#echo "\"$LINE\",\"$WPCONTENT\",\"$README\"" >> output.csv
-	mongo local --eval "var _domain='"$col1"'; var _set={'404Test':'"$WPCONTENT"','readmeTest':'"$README"'}" inc/add-object-to-mongodb.js
+	if [ -z "$RESULT" ]
+	then
+	  echo "brak maili"
+	  mongo local --eval "var _domain='"$col1"'; var _set={'emails':'false'}" inc/add-object-to-mongodb.js
+	else
+	  echo "$RESULT"
+	  mongo local --eval "var _domain='"$col1"'; var _set={'emails':'"$RESULT"'}" inc/add-object-to-mongodb.js
+	fi
+	
 
 done < "workspace/$DATE.csv"
 

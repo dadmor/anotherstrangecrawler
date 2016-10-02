@@ -1,2 +1,4 @@
-RESULT="`mongo --quiet demoDb ../inc/mongo-export-csv.js`" 
-echo "$RESULT" > ../processed-files/crawled-domains/domains-`date +%Y-%m-%d`.csv
+RESULT="`mongo --quiet local inc/mongo-export-csv.js`" 
+echo "$RESULT" > workspace/`date +%Y%m%d`.csv
+echo "------------------------"
+echo "export domains completed"
