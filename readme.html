@@ -1,59 +1,85 @@
+<style>
+.bash{
+	color: #00d2ff;
+	background: #4e4e4e;
+	padding: 2px 4px;
+	line-height: 2em;
+	border-radius: 3px;
+}
+</style>
 
+<body style="background:#333">
 <a href="https://dadmor.github.io/anotherstrangecrawler/readme.html">
 	PROJRCT PAGE
 </a>
-<pre style="margin:0 auto; display:table">
-================================================
-BingUltraSpeedCrw:detect cms, speed, emails etc. 
-Authors:GDurtan, AKwiatkowski
+<pre style="margin:0 auto; display:table; color:#71e148">
+<span style="color:#e1cf48">==========================================</span>
+BingUltraSpeedCrw
 require: phantomjs, mongoDB
-================================================
-Install: Copy files to your directory, install
-phantomjs, mongoDB and enjoy
+<span style="color:#e1cf48">==========================================</span>
+Install: Copy files to your directory,
+install phantomjs, mongoDB and enjoy
 
-------------------------------------------------
+------------------------------------------
 
 Getting started:
 
 Start MongoDb
-$ sudo mongod
+<span class="bash">$ sudo mongod</span>
 
 optionaly set database
-$ mongo
-$ use local
+<span class="bash">$ mongo</span>
+<span class="bash">$ use local</span>
 
-================================================
+go to disk location
+<span class="bash">$ cd ~/your directory</span>
 
-GET DOMAINS FROM BING > directly to mongo
+<span style="color:#e1cf48">==========================================</span>
 
-$ sudo bash parser.sh query proxurl
+1. GET DOMAINS LIST FROM BING 
 
-run it many times
+<span class="bash">$ sudo bash parser.sh --query --proxurl</span>
 
-------------------------------------------------
-################################################
-PREPARE FOR TEST
-------------------------------------------------
+run it many times to diffrent queries
+
+<span style="color:#e1cf48">==========================================</span>
+
+OR TESTING DATABASE DIRECTLY:
+
+<span style="color:#e1cf48">------------------------------------------</span>
+1. PREPARE FOR TEST
+<span style="color:#e1cf48">------------------------------------------</span>
 
 Export all
-sudo bash mongo-export-csv.sh
+<span class="bash">$ sudo bash mongo-export-csv.sh</span>
 
-------------------------------------------------
-################################################
-TESTS
-------------------------------------------------
+<span style="color:#e1cf48">------------------------------------------</span>
+2. TESTS
+<span style="color:#e1cf48">------------------------------------------</span>
 
 404 Test
-$ sudo bash WP-404-TEST.sh 
+<span class="bash">$ sudo bash WP-404-TEST.sh</span>
 Check wp-content and readme.html http code
-------------------------------------------------
-Meta Generator Test
-$ sudo META-VERSION-TEST.sh
-Find meta_name="generator" and return content
-------------------------------------------------
-Page insight CMS test
-$ sudo PAGE-INSIGHT-CMS-TEST.sh
-Find and return cms type from Google PSI API
+<span style="color:#e1cf48">------------------------------------------</span>
 
+Meta Generator Test
+<span class="bash">$ sudo META-VERSION-TEST.sh</span>
+Find meta_name="generator" and return it
+<span style="color:#e1cf48">------------------------------------------</span>
+
+Page insight CMS test
+<span class="bash">$ sudo PAGE-INSIGHT-CMS-TEST.sh</span>
+Find cms type and return it
+<span style="color:#e1cf48">------------------------------------------</span>
+
+Page insight score test
+<span class="bash">$ sudo PAGE-INSIGHT-SCORE-TEST.sh</span>
+Find speed score and return it
+<span style="color:#e1cf48">------------------------------------------</span>
+
+Grabage emails test
+...
+<span style="color:#e1cf48">------------------------------------------</span>
 
 </pre>
+</body>
